@@ -1,4 +1,3 @@
-// src/pages/table.js
 import { useState } from 'react';
 import Head from 'next/head';
 
@@ -8,26 +7,19 @@ export default function Table() {
     id: '',
     nombres: '',
     fechaNacimiento: '',
-    edad: '',
     planContratar: '',
     valor: '',
   });
 
   const addData = () => {
-    // Calcula la edad a partir de la fecha de nacimiento
-    const fechaNacimiento = new Date(newData.fechaNacimiento);
-    const hoy = new Date();
-    const edad = Math.floor((hoy - fechaNacimiento) / (365.25 * 24 * 60 * 60 * 1000));
-
-    // Agrega los nuevos datos a la tabla
-    setData([...data, { ...newData, edad }]);
+    // Agrega los nuevos datos a la tabla sin calcular la edad
+    setData([...data, { ...newData }]);
     
     // Reinicia los datos del formulario
     setNewData({
       id: '',
       nombres: '',
       fechaNacimiento: '',
-      edad: '',
       planContratar: '',
       valor: '',
     });
@@ -49,7 +41,6 @@ export default function Table() {
               <th>ID</th>
               <th>Nombres</th>
               <th>Fecha de Nacimiento</th>
-              <th>Edad</th>
               <th>Plan a Contratar</th>
               <th>Valor</th>
             </tr>
@@ -60,7 +51,6 @@ export default function Table() {
                 <td>{item.id}</td>
                 <td>{item.nombres}</td>
                 <td>{item.fechaNacimiento}</td>
-                <td>{item.edad}</td>
                 <td>{item.planContratar}</td>
                 <td>{item.valor}</td>
               </tr>
